@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>lâi-khì</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f3f4f6;
+}
+
+/* ===== 固定導覽列 ===== */
+.navbar {
+  background: #3b82f6;
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* ===== 主體容器 ===== */
+.container {
+  display: flex;
+  padding: 20px;
+  margin-top: 70px; /* 避開固定導覽列 */
+}
+
+/* 左側個人資料 */
+.left {
+  width: 20%;
+}
+
+/* 中間動態牆 */
+.center {
+  width: 55%;
+  margin: 0 20px;
+}
+
+/* 右側推薦好友 */
+.right {
+  width: 25%;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.profile {
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.time {
+  font-size: 12px;
+  color: gray;
+}
+
+.friend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.friend-info {
+  display: flex;
+  align-items: center;
+}
+
+.friend-info img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+.post-input input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* ===== 新增：留言區 ===== */
+.comments {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.comment {
+  font-size: 13px;
+  background: #f1f5f9;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.comment strong {
+  margin-right: 5px;
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left, .center, .right {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 固定導覽列 -->
+<div class="navbar">
+  lâi-khì
+</div>
+
+<div class="container">
+
+  <!-- 左側 -->
+  <div class="left">
+    <div class="card profile">
+      <img src="LINE_ALBUM_20251012石門水庫半日遊_260116_2.jpg" class="avatar">
+      <h3>可愛阿嬤</h3>
+      <p>朋友：1000 人</p>
+    </div>
+  </div>
+
+  <!-- 中間 -->
+  <div class="center">
+
+    <div class="card post-input">
+      <input type="text" placeholder="在想什麼？">
+    </div>
+
+    <!-- 第一篇貼文 -->
+    <div class="card">
+      <div class="post-header">
+        <img src="LINE_ALBUM_20250913花（六十石）東二日快閃_260116_15.jpg">
+        <div>
+          <strong>周員</strong><br>
+          <span class="time">2小時前</span>
+        </div>
+      </div>
+      <p>今天去公園散步，超舒服 🌿</p>
+
+      <!-- 新增好友留言 -->
+      <div class="comments">
+        <div class="comment">
+          <strong>林秀芬：</strong> 天氣真的很好耶！
+        </div>
+        <div class="comment">
+          <strong>劉意君：</strong> 下次一起去走走～
+        </div>
+        <div class="comment">
+          <strong>劉明勝：</strong> 看起來很放鬆 👍
+        </div>
+      </div>
+    </div>
+
+    <!-- 第二篇貼文 -->
+    <div class="card">
+      <div class="post-header">
+        <img src="S__39313441.jpg">
+        <div>
+          <strong>林秀芬</strong><br>
+          <span class="time">5小時前</span>
+        </div>
+      </div>
+      <p>今天跟我寶貝們一起出去玩！</p>
+
+      <!-- 新增好友留言 -->
+      <div class="comments">
+        <div class="comment">
+          <strong>周員：</strong> 好幸福的畫面 😊
+        </div>
+        <div class="comment">
+          <strong>劉明煌：</strong> 小孩好可愛！
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 右側 -->
+  <div class="right">
+    <div class="card">
+      <h4>推薦好友</h4>
+
+      <div class="friend-item">
+        <div class="friend-info">
+          <img src="S__69689353_0.jpg">
+          <span>劉意君</span>
+        </div>
+        <button>加好友</button>
+      </div>
+
+      <div class="friend-item">
+        <div class="friend-info">
+          <img src="S__69689351_0.jpg">
+          <span>劉明勝</span>
+        </div>
+        <button>加好友</button>
+      </div>
+
+      <div class="friend-item">
+        <div class="friend-info">
+          <img src="S__69689352_0.jpg">
+          <span>劉明煌</span>
+        </div>
+        <button>加好友</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
