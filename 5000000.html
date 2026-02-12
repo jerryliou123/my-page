@@ -591,22 +591,9 @@ button:hover {
 function likePost(button) {
   const card = button.closest(".card");
   const likeText = card.querySelector(".like-count");
-
-  // 取當前數量
   let count = parseInt(likeText.textContent.match(/\d+/)[0]);
-
-  // 用 localStorage 儲存全局計數（同瀏覽器分頁共享）
-  let globalCount = parseInt(localStorage.getItem('post1Likes') || count);
-
-  globalCount++;
-  localStorage.setItem('post1Likes', globalCount);
-
-  likeText.textContent = "👍 " + globalCount + " 人按讚";
-
-  // 第 20 個按讚中獎
-  if(globalCount === 20){
-    alert("恭喜第 20 個按讚的人中獎！");
-  }
+  count++;
+  likeText.textContent = "👍 " + count + " 人按讚";
 }
 </script>
 
@@ -614,6 +601,7 @@ function likePost(button) {
 
 </body>
 </html>
+
 
 
 
