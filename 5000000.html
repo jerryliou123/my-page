@@ -28,24 +28,12 @@ body {
 .container {
   display: flex;
   padding: 20px;
-  margin-top: 70px; /* 避開固定導覽列 */
+  margin-top: 70px;
 }
 
-/* 左側個人資料 */
-.left {
-  width: 20%;
-}
-
-/* 中間動態牆 */
-.center {
-  width: 55%;
-  margin: 0 20px;
-}
-
-/* 右側推薦好友 */
-.right {
-  width: 25%;
-}
+.left { width: 20%; }
+.center { width: 55%; margin: 0 20px; }
+.right { width: 25%; }
 
 .card {
   background: white;
@@ -83,6 +71,32 @@ body {
 .time {
   font-size: 12px;
   color: gray;
+}
+
+/* ===== 新增：貼文圖片樣式 ===== */
+.post-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* ===== 留言區 ===== */
+.comments {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.comment {
+  font-size: 13px;
+  background: #f1f5f9;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.comment strong {
+  margin-right: 5px;
 }
 
 .friend-item {
@@ -124,31 +138,9 @@ button:hover {
   border: 1px solid #ddd;
 }
 
-/* ===== 新增：留言區 ===== */
-.comments {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid #eee;
-}
-
-.comment {
-  font-size: 13px;
-  background: #f1f5f9;
-  padding: 6px 8px;
-  border-radius: 6px;
-  margin-top: 6px;
-}
-
-.comment strong {
-  margin-right: 5px;
-}
-
 /* 手機版 */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
+  .container { flex-direction: column; }
   .left, .center, .right {
     width: 100%;
     margin: 0 0 20px 0;
@@ -159,7 +151,6 @@ button:hover {
 
 <body>
 
-<!-- 固定導覽列 -->
 <div class="navbar">
   lâi-khì
 </div>
@@ -191,9 +182,12 @@ button:hover {
           <span class="time">2小時前</span>
         </div>
       </div>
+
       <p>今天去公園散步，超舒服 🌿</p>
 
-      <!-- 新增好友留言 -->
+      <!-- Local 圖片 -->
+      <img src="LINE_ALBUM_20251130原民文化公園_大溝溪生態園區散步_260126_1.jpg" class="post-image">
+
       <div class="comments">
         <div class="comment">
           <strong>林秀芬：</strong> 天氣真的很好耶！
@@ -216,9 +210,12 @@ button:hover {
           <span class="time">5小時前</span>
         </div>
       </div>
+
       <p>今天跟我寶貝們一起出去玩！</p>
 
-      <!-- 新增好友留言 -->
+      <!-- Local 圖片 -->
+      <img src="LINE_ALBUM_20251206鹿港雲林無預警快閃1.5日_260126_1.jpg" class="post-image">
+
       <div class="comments">
         <div class="comment">
           <strong>周員：</strong> 好幸福的畫面 😊
