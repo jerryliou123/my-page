@@ -55,6 +55,30 @@ body {
   margin-bottom: 10px;
 }
 
+/* 小統計卡 & 生日提醒 */
+.stat-card, .birthday-card {
+  text-align: center;
+  font-size: 14px;
+  color: #374151;
+}
+
+.stat-number {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 統計小圖案 */
+.stat-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+/* 生日蛋糕圖示 */
+.birthday-card span {
+  font-size: 24px;
+}
+
+/* 貼文區 */
 .post-header {
   display: flex;
   align-items: center;
@@ -73,14 +97,45 @@ body {
   color: gray;
 }
 
-/* ===== 新增：貼文圖片樣式 ===== */
 .post-image {
   width: 100%;
   border-radius: 8px;
   margin-top: 10px;
 }
 
-/* ===== 留言區 ===== */
+.post-stickers {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+/* ===== 按讚留言區 ===== */
+.post-stats {
+  margin-top: 8px;
+  font-size: 13px;
+  color: gray;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.post-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+}
+
+.post-actions button:hover {
+  color: #3b82f6;
+}
+
+/* 留言區 */
 .comments {
   margin-top: 10px;
   padding-top: 8px;
@@ -111,11 +166,26 @@ body {
   align-items: center;
 }
 
-.friend-info img {
+.friend-info img, .default-avatar {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   margin-right: 8px;
+  object-fit: cover;
+}
+
+/* default avatar */
+.default-avatar {
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.default-avatar svg {
+  width: 20px;
+  height: 20px;
+  fill: #6b7280;
 }
 
 button {
@@ -159,10 +229,47 @@ button:hover {
 
   <!-- 左側 -->
   <div class="left">
+    <!-- 個人資料卡 -->
     <div class="card profile">
       <img src="LINE_ALBUM_20251012石門水庫半日遊_260116_2.jpg" class="avatar">
       <h3>可愛阿嬤</h3>
-      <p>朋友：1000 人</p>
+    </div>
+    
+    <!-- 小統計卡 -->
+    <div class="card stat-card">
+      <p>貼文數</p>
+      <p class="stat-number">256</p>
+      <p>朋友數</p>
+      <p class="stat-number">512</p>
+    </div>
+  
+    <!-- 生日提醒卡 -->
+    <div class="card birthday-card" style="background: linear-gradient(135deg, #fcd34d, #fbbf24); color: #374151;">
+      <p>🎉 今天生日</p>
+      <p>我自己</p>
+    </div>
+  
+    <!-- 今日任務卡 -->
+    <div class="card stat-card" style="background: linear-gradient(135deg, #93c5fd, #60a5fa); color: #1e3a8a;">
+      <p>📌 今日任務</p>
+      <ul style="padding-left: 20px; text-align: left; margin-top: 5px;">
+        <li>回覆朋友訊息 ✅</li>
+        <li>散步 30 分鐘 🚶‍♀️</li>
+        <li>整理相簿 🖼️</li>
+      </ul>
+    </div>
+  
+    <!-- 天氣卡 -->
+    <div class="card stat-card" style="background: linear-gradient(135deg, #f87171, #fca5a5); color: #7f1d1d;">
+      <p>☀️ 天氣資訊</p>
+      <p>台北市</p>
+      <p>22°C | 🌤️ 多雲</p>
+    </div>
+  
+    <!-- 心情狀態卡 -->
+    <div class="card stat-card" style="background: linear-gradient(135deg, #6ee7b7, #34d399); color: #064e3b;">
+      <p>💖 今日心情</p>
+      <p>😄 感覺超棒！</p>
     </div>
   </div>
 
@@ -184,9 +291,20 @@ button:hover {
       </div>
 
       <p>今天去公園散步，超舒服 🌿</p>
-
-      <!-- Local 圖片 -->
       <img src="LINE_ALBUM_20251130原民文化公園_大溝溪生態園區散步_260126_1.jpg" class="post-image">
+
+      <!-- 小貼紙 -->
+      <div class="post-stickers">💖🌸☀️</div>
+
+      <div class="post-stats">
+        <span class="like-count">👍 12 人按讚</span>
+      </div>
+
+      <div class="post-actions">
+        <button onclick="likePost(this)">👍 按讚</button>
+        <button>💬 留言</button>
+        <button>↗ 分享</button>
+      </div>
 
       <div class="comments">
         <div class="comment">
@@ -212,9 +330,20 @@ button:hover {
       </div>
 
       <p>今天跟我寶貝們一起出去玩！</p>
-
-      <!-- Local 圖片 -->
       <img src="LINE_ALBUM_20251206鹿港雲林無預警快閃1.5日_260126_1.jpg" class="post-image">
+
+      <!-- 小貼紙 -->
+      <div class="post-stickers">🎈🎁🎶</div>
+
+      <div class="post-stats">
+        <span class="like-count">👍 8 人按讚</span>
+      </div>
+
+      <div class="post-actions">
+        <button onclick="likePost(this)">👍 按讚</button>
+        <button>💬 留言</button>
+        <button>↗ 分享</button>
+      </div>
 
       <div class="comments">
         <div class="comment">
@@ -233,10 +362,11 @@ button:hover {
     <div class="card">
       <h4>推薦好友</h4>
 
+      <!-- 如果沒有圖片用 default avatar，右側每個好友後加小圖示 -->
       <div class="friend-item">
         <div class="friend-info">
           <img src="S__69689353_0.jpg">
-          <span>劉意君</span>
+          <span>劉意君</span> 🎁
         </div>
         <button>加好友</button>
       </div>
@@ -244,7 +374,7 @@ button:hover {
       <div class="friend-item">
         <div class="friend-info">
           <img src="S__69689351_0.jpg">
-          <span>劉明勝</span>
+          <span>明勝</span> ⭐
         </div>
         <button>加好友</button>
       </div>
@@ -252,15 +382,220 @@ button:hover {
       <div class="friend-item">
         <div class="friend-info">
           <img src="S__69689352_0.jpg">
-          <span>劉明煌</span>
+          <span>劉明煌</span> 🎉
         </div>
         <button>加好友</button>
+      </div>
+
+      <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>陳春美</span> 🎂
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>酷酷馮</span>
+        </div>
+        <button>加好友</button>
+      </div>
+
+      <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Alan Liu</span>
+        </div>
+        <button>加好友</button>
+      </div>
+
+      <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>劉育展</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>劉意新 Hitomi</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>劉意立</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>意娟</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Sandy Lin</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Fitzgerald</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>馮英彬</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>李靜瑜</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Mingder</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Fitzgerald</span>
+        </div>
+        <button>陳俊男</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Jackie劉</span>
+        </div>
+        <button>加好友</button>
+      </div>
+	  
+	  <div class="friend-item">
+        <div class="friend-info">
+          <div class="default-avatar">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <span>Fitzgerald</span>
+        </div>
+        <button>李弘基</button>
       </div>
 
     </div>
   </div>
 
 </div>
+
+<script>
+function likePost(button) {
+  const card = button.closest(".card");
+  const likeText = card.querySelector(".like-count");
+  let count = parseInt(likeText.textContent.match(/\d+/)[0]);
+  count++;
+  likeText.textContent = "👍 " + count + " 人按讚";
+}
+</script>
 
 </body>
 </html>
