@@ -591,22 +591,29 @@ button:hover {
 function likePost(button) {
   const card = button.closest(".card");
   const likeText = card.querySelector(".like-count");
-  let count = parseInt(likeText.textContent.match(/\d+/)[0]);
-  count++;
-  likeText.textContent = "👍 " + count + " 人按讚";
 
-  // 如果是第一篇貼文，且按讚數正好等於 20
-  // 假設第一篇貼文是 container 中的第一個 .card (不含輸入欄)
-  const center = document.querySelector(".center");
-  const firstPost = center.querySelectorAll(".card")[1]; // 第0個是輸入欄
-  if (card === firstPost && count === 20) {
-    alert("🎉 恭喜第 20 個按讚的人中獎！");
+  // 取當前數量
+  let count = parseInt(likeText.textContent.match(/\d+/)[0]);
+
+  // 用 localStorage 儲存全局計數（同瀏覽器分頁共享）
+  let globalCount = parseInt(localStorage.getItem('post1Likes') || count);
+
+  globalCount++;
+  localStorage.setItem('post1Likes', globalCount);
+
+  likeText.textContent = "👍 " + globalCount + " 人按讚";
+
+  // 第 20 個按讚中獎
+  if(globalCount === 20){
+    alert("恭喜第 20 個按讚的人中獎！");
   }
 }
 </script>
 
 
+
 </body>
 </html>
+
 
 
