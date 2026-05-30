@@ -1,0 +1,95 @@
+所有 print 內容將同步寫入 C:\Users\Jerry-yc.Liu\Desktop\script\stock_signal_charts\20260316_081508_銀行業\stock_analysis_20260316_081508_銀行業.log
+正在讀取大 pkl: C:\Users\Jerry-yc.Liu\Desktop\script\cache\all_stock_2y.pkl
+大 pkl 讀取完成，共有 854 檔股票
+可用股票數量: 34
+銀行業 全部有快取的股票代號: 
+['2801', '2809', '2812', '2816', '2820', '2832', '2834', '2836', '2838', '2845', '2849', '2850', '2851', '2852', '2855', '2867', '2880', '2881', '2882', '2883', '2884', '2885', '2886', '2887', '2888', '2889', '2890', '2891', '2892', '2897', '5876', '5880', '6005', '6024']
+✅ 快取最新交易日為 2026-01-29, 昨日訊號才有可能出現。
+
+[Step 1: Random Forest 訓練權重 (Random Forest Algo)]
+訓練集勝率: 96.20%
+測試集勝率: 92.81%
+Random Forest 訓練耗時: 3.50 秒
+y_all 樣本分布 (0=敗, 1=勝):
+0    1298
+1     126
+dtype: int64
+勝率比例: 8.848315%
+
+混淆矩陣 (Confusion Matrix):
+[[363  27]
+ [ 29 360]]
+
+分類報告 (Classification Report):
+              precision    recall  f1-score   support
+
+           0     0.9260    0.9308    0.9284       390
+           1     0.9302    0.9254    0.9278       389
+
+    accuracy                         0.9281       779
+   macro avg     0.9281    0.9281    0.9281       779
+weighted avg     0.9281    0.9281    0.9281       779
+
+
+各特徵對模型預測勝率的重要性: 
+k_pattern   : 0.0042
+ma_cross    : 0.0032
+rsi_signal  : 0.0010
+macd_signal : 0.0027
+kd_cross    : 0.0011
+vol_cross   : 0.0008
+RSI         : 0.0756
+MACD        : 0.1290
+K           : 0.0502
+D           : 0.0573
+close/5MA   : 0.1196
+close/20MA  : 0.1166
+close/60MA  : 0.1993
+vol/5MA     : 0.0560
+vol/20MA    : 0.0962
+bullish_ma  : 0.0060
+bullish_ma_just: 0.0013
+vol_up_just : 0.0033
+rsi_just    : 0.0015
+ma5_up      : 0.0076
+ma20_up     : 0.0051
+ma60_up     : 0.0118
+bullish_ma_n: 0.0062
+ma5_up_n    : 0.0051
+vol_up_n    : 0.0102
+bullish_ma_and_rsi: 0.0054
+ma5_up_and_macd: 0.0022
+bullish_ma_and_vol: 0.0126
+is_w_buttom : 0.0062
+is_triangle : 0.0014
+is_cup_handle: 0.0000
+is_inverse_head_shoulder: 0.0013
+特徵重要性圖已存檔於 C:\Users\Jerry-yc.Liu\Desktop\script\stock_signal_charts\20260316_081508_銀行業\feature_importances.png
+
+[Step 2: 多股票回測與分數分布 (Multi Stock Analyze)]
+回測分數分布總耗時: 3.47 秒
+
+分數分布統計: 最小值：0.06，最大值: 0.98，平均值:0.29，中位數:0.23，95分位: 0.75
+
+近 60 天内分數 >= 95分位 (0.75) 且多頭排列持續且量能放大且多頭+RSI>50的進場訊號:
+
+近 60 天內無進場訊號
+分數>95分位且多頭排列持續性勝率: 51.35% (樣本數: 37)
+分數>95分位且多頭排列且量能持續放大勝率: 57.14% (樣本數: 21)
+剛形成多頭排列勝率: 3.33% (樣本數: 30)
+
+[BYPASS Step3: 畫圖]
+
+[Step 4: 進出場買賣模擬 (Entry and exit trading simulation)]
+
+🔍 昨日 (2026-01-28) 有訊號，今日 (2026-01-29) 用開盤價進場 (模擬持有部位)
+昨日所有股票都沒有進場訊號
+
+最近 10 天內所有分數 >= 95 分位(0.75) 且多頭排列持續且量能放大且多頭+RSI>50的進場訊號 (含預測，無勝負結果)
+最近 10 天內沒有任何進場訊號
+
+今日(2026-01-29)有訊號，預測(2026-01-30)進場的 Predicted
+
+已更新模擬自動下單 Excel: C:\Users\Jerry-yc.Liu\Desktop\script\stock_signal_charts\auto_trade_sim.xlsx，sheet: 銀行業
+
+全部執行總耗時: 14.60 秒
