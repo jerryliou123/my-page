@@ -9,12 +9,14 @@ import pandas as pd
 import numpy as np
 import twstock
 import datetime
+import sklearn
+from sklearn.ensemble import RandomForestClassifier
 
 # =============================================================================
 # 設定
 # =============================================================================
 
-CACHE_DIR = r'D:\share\MT6815\py_script\mipc_script_2023_7e_full_GEN99R_W23.35.5\cache'
+CACHE_DIR = r'D:\Jerry\script\my-page\cache'
 MODEL_DIR = os.path.join(CACHE_DIR, '../models')
 OUTPUT_DIR = os.path.join(CACHE_DIR, '../output')
 

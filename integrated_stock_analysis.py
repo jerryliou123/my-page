@@ -32,7 +32,7 @@ warnings.filterwarnings("ignore")
 
 # ============================================================
 # 參數設定
-CACHE_DIR = r'D:\share\MT6815\py_script\mipc_script_2023_7e_full_GEN99R_w23.35.5\cache'
+CACHE_DIR = r'D:\Jerry\script\my-page\cache'
 YEARS, MAX_WORKERS, SLEEP_FETCH, SLEEP_SAVE = 2, 16, 0.03, 0.05
 STALE_THRESHOLD = 90
 user_choice, lookahead_days, profit_target, stop_loss, vol_times = 'all', 15, 0.07, 0.03, 0.05

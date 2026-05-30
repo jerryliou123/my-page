@@ -70,7 +70,10 @@ MODEL_DIR = BASE_DIR / 'models'
 
 def clear_screen():
     """清空螢幕"""
-    os.system('cls' if os.name == 'nt' else 'clear')
+    try:
+        os.system('cls' if os.name == 'nt' else 'clear')
+    except:
+        print("\n" * 50)  # 如果清屏失敗，用換行代替
 
 
 def print_banner():
@@ -407,8 +410,19 @@ def main_menu():
         print("\n  0. 退出")
 
         print("\n" + "=" * 80)
+        sys.stdout.flush()  # 確保所有輸出都顯示
 
-        choice = input("請選擇 (0-8): ").strip()
+        # 使用更可靠的輸入方式
+        try:
+            # 直接使用 input()，但先清空輸出緩衝
+            print("請選擇 (0-8): ", end='', flush=True)
+            choice = sys.stdin.readline().strip()
+            if not choice:  # 如果讀到空字串 (EOF)
+                print("\n[錯誤] 無法讀取輸入，程式結束")
+                break
+        except (EOFError, KeyboardInterrupt):
+            print("\n\n程式中斷")
+            break
 
         if choice == '0':
             print("\n 再見！")
